@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #000000;
+}
+
+.green_bar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #1F7D53;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.grey_bar {
+    width: 100%;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eeeeee;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    font-family: 'Space Mono', monospace;
+    font-size: 15px;
+}
+
+
+
+.footer_buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer_buttons a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 14px;
+    font-family: 'Space Mono', monospace;
+}
+
+.sign {
+    background-color: #000000;
+    color: #1F7D53;
+}
+
+.log {
+    background-color: #1F7D53;
+    color: #000000;
+}
+
+.center_body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #1F7D53;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 70px;
+    gap: 0px;
+}
+
+input {
+    width: 500px;
+    padding: 20px;
+    border-radius: 50px;
+    font-size: 20px;
+    font-family: 'Space Mono', monospace;
+}
+
+h2 {
+    font-size: 40px;
+    color: #ffffff; 
+}
+
+.information {
+    font-size: 30px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.information a {
+    border: #eeeeee;
+    border-style: solid;
+    border-radius: 5px;
+}
