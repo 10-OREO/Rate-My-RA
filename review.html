@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Review</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+ </head>
+<body>
+    <header class="green_bar">
+        <div class="buttons">
+            <button class="sign" id="auth-button" onclick="toggleAuth()">Log In</button>
+            <button class="sign" onclick="location.href='home.html'">Home</button>
+        </div>
+    </header>
+    <main>
+        <div class="center_body">
+            <h1>Post a Review</h1>
+            <form id="review-form">
+                <div class="buttons">
+                    <label for="ra">RA:</label>
+                    <input type="text" id="ra" required>
+                    <label for="review">Your Review:</label>
+                    <input type="text" id="review" required>
+                    <button class="log"type="submit">Submit Review</button>
+            </div>
+            </form>
+            <p id="message"></p>
+        </div>
+    </main>
+    <footer class="grey_bar">
+        <div class="footer_buttons">
+            <a href="my_reviews.html">My Reviews</a>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('review-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the page from refreshing
+    
+            // Retrieve the values from the input fields
+            const ra = document.getElementById('ra').value;
+            const reviewText = document.getElementById('review').value;
+    
+            // Create a new review object
+            const review = { ra, reviewText };
+    
+            // Retrieve existing reviews from localStorage, or create a new array if none exist
+            let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    
+            // Add the new review to the reviews array
+            reviews.push(review);
+    
+            // Save the updated reviews array to localStorage
+            localStorage.setItem('reviews', JSON.stringify(reviews));
+    
+            // Display a confirmation message
+            const message = document.getElementById('message');
+            message.textContent = `Thank you for your review, ${ra}! Your review has been submitted.`;
+    
+            // Redirect to the "My Reviews" page after submission
+            window.location.href = 'my_reviews.html'; // Redirect to "My Reviews" page
+        });
+    </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Reviews</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="green_bar">
+        <div class="buttons">
+            <button class="sign" id="auth-button" onclick="toggleAuth()">Log In</button>
+            <button class="sign" onclick="location.href='home.html'">Home</button>
+        </div>
+    </header>
+    <main>
+        <div class="center_body">
+            <h1>My Reviews</h1>
+            <div id="reviews-list"></div> 
+        </div>
+    </main>
+    <footer class="grey_bar">
+        <div class="footer_buttons">
+            <a href="home.html">Home</a>
+        </div>
+    </footer>
+
+    <script>
+        // Wait for the DOM to be loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            const reviewsList = document.getElementById('reviews-list');
+
+            // Retrieve the reviews from localStorage
+            const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+            // Check if there are any reviews
+            if (reviews.length === 0) {
+                reviewsList.innerHTML = '<p>No reviews yet.</p>';
+            } else {
+                // Loop through the reviews and display each one
+                reviews.forEach(function (review) {
+                    const reviewElement = document.createElement('div');
+                    reviewElement.classList.add('review');
+                    reviewElement.innerHTML = `
+                        <p><strong>RA:</strong> ${review.ra}</p>
+                        <p><strong>Review:</strong> ${review.reviewText}</p>
+                        <hr />
+                    `;
+                    reviewsList.appendChild(reviewElement);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

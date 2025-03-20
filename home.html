@@ -13,11 +13,11 @@
 <body>
     <header class="green_bar">
         <div class="buttons">
-            <button class="log"onclick="location.href='login.html'">Log In</button>
+            <button id="auth-button" class="log"onclick="location.href='login.html'"></button>
             <button class="sign"onclick="location.href='signup.html'">Sign Up</button>
+            <button id="my-reviews" class="reviews" style="display: none;" onclick="location.href='review.html'">Reviews</button>
         </div>
     </header>
-
     <main>
         <div class="center_body">
             <h1>Rate My RA</h1>
@@ -30,7 +30,6 @@
             </div>
         </div>
     </main>
-
     <footer class="grey_bar">
         <div class="footer_buttons">
             <a href="help.html">Help</a>
@@ -41,6 +40,31 @@
             <a href="CA_Notice_.html">CA Notice at Collections</a>
         </div>
     </footer>
+    <script>
+        function updateAuthButton() {
+            const loggedInUser = localStorage.getItem("loggedInUser");
+            const authButton = document.getElementById("auth-button");
+            const myReviewsButton = document.getElementById("my-reviews");
     
+            if (loggedInUser) {
+                authButton.innerText = "Log Out";
+                authButton.onclick = function() {
+                    localStorage.removeItem("loggedInUser");
+                    window.location.reload(); // Reload page to update UI
+                };
+    
+                myReviewsButton.style.display = "inline-block"; // Show "My Reviews" button
+            } else {
+                authButton.innerText = "Log In";
+                authButton.onclick = function() {
+                    window.location.href = "login.html";
+                };
+    
+                myReviewsButton.style.display = "none"; // Hide "My Reviews" button
+            }
+        }
+    
+        updateAuthButton();
+    </script>
 </body>
 </html>

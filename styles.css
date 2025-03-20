@@ -63,6 +63,11 @@ body {
     color: #000000;
 }
 
+.reviews {
+    background-color: #000000;
+    color: #1F7D53;
+}
+
 .center_body {
     display: flex;
     flex-direction: column;
@@ -99,4 +104,8 @@ h2 {
     border: #eeeeee;
     border-style: solid;
     border-radius: 5px;
+}
+
+p {
+    font-size: 20px;
 }
