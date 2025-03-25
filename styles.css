@@ -1,11 +1,12 @@
 body {
-    margin: 0;
+    margin: 10px;
     padding: 0;
     text-align: center;
     background-color: #000000;
 }
 
-.green_bar {
+/*
+header {
     width: 100%;
     height: 60px;
     display: flex;
@@ -16,8 +17,9 @@ body {
     top: 0;
     left: 0;
 }
+*/
 
-.grey_bar {
+footer {
     width: 100%;
     height: 25px;
     display: flex;
@@ -53,14 +55,24 @@ body {
     font-family: 'Space Mono', monospace;
 }
 
-.sign {
+.black_green_button {
     background-color: #000000;
     color: #1F7D53;
 }
 
-.log {
+.black_green_button:hover {
     background-color: #1F7D53;
     color: #000000;
+}
+
+.green_black_button {
+    background-color: #1F7D53;
+    color: #000000;
+}
+
+.green_black_button:hover {
+    background-color: #000000;
+    color: #1F7D53;
 }
 
 .reviews {

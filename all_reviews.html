@@ -3,34 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post a Review</title>
+    <title>RA Reviews</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="backend.js"></script>
- </head>
+</head>
 <body>
     <header>
         <div class="buttons">
             <button id="login-button" class="green_black_button" onclick="location.href='login.html'">Log In</button>
+            <button id="signup-button" class="black_green_button" onclick=" location.href='signup.html'">Sign Up</button>
             <button id="home-button" class="black_green_button" onclick="location.href='home.html'">Home</button>
         </div>
     </header>
     <main>
         <div class="center_body">
-            <h1 id="post">Post a Review</h1>
-            <form id="review-form">
-                <div class="buttons">
-                    <label for="ra">RA:</label>
-                    <input type="text" id="ra" required>
-                    <label for="review">Your Review:</label>
-                    <input type="text" id="review" required>
-                    <label for="rating">Your Rating:</label>
-                    <input type="number" id="rating" required>
-                    <button class="green_black_button" type="submit">Submit Review</button>
-                </div>
-            </form>
-            <p id="message"></p>
+            <h1>RA Reviews</h1>
+            <div id="reviews-list"></div> 
+            <div class="buttons">
+                <button class="green_black_button" onclick="location.href='review.html'">Write a Review!!!</button>
+            </div>
         </div>
     </main>
     <footer>
@@ -44,7 +37,7 @@
         </div>
     </footer>
     <script>
-        user_review();
+        review_display();
         logged_in_user_check();
     </script>
 </body>
