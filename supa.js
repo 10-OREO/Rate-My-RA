@@ -262,12 +262,48 @@ if (raProfilesList) {
         const profileElement = document.createElement('div');
         profileElement.classList.add('ra-profile');
         profileElement.innerHTML = `
-          <p><strong>Name:</strong> ${profile.ra_name}</p>
-          <p><strong>Hall:</strong> ${profile.ra_hall}</p>
-          <hr />
-        `;
+      <p><strong>Name:</strong> <a href="ra_profile.html?ra_name=${encodeURIComponent(profile.ra_name)}">${profile.ra_name}</a></p>
+      <p><strong>Hall:</strong> ${profile.ra_hall}</p>
+      <hr />
+    `;
         raProfilesList.appendChild(profileElement);
       });
+    }
+  })();
+}
+
+// Calculate and display average rating for RA on their profile
+const raAvgRatingDisplay = document.getElementById('ra-average-rating');
+if (raProfileReviewsList && raAvgRatingDisplay) {
+  (async () => {
+    const query = window.location.search;
+    let raName = null;
+
+    if (query.startsWith("?")) {
+      const params = query.substring(1).split("&");
+      for (const param of params) {
+        const [key, value] = param.split("=");
+        if (key === "ra_name") {
+          raName = decodeURIComponent(value);
+          break;
+        }
+      }
+    }
+
+    if (raName) {
+      const { data: reviews, error } = await supabase
+        .from('reviews')
+        .select('rating')
+        .eq('ra_name', raName);
+
+      if (!error && reviews.length > 0) {
+        const ratings = reviews.map(r => r.rating).filter(r => typeof r === 'number');
+        const avg = ratings.reduce((a, b) => a + b, 0) / ratings.length;
+        const roundedAvg = avg.toFixed(1);
+        raAvgRatingDisplay.textContent = `Average Rating: ${roundedAvg}/5`;
+      } else {
+        raAvgRatingDisplay.textContent = "No ratings yet.";
+      }
     }
   })();
 }
