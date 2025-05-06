@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqeHFmcXN0dGp2b29ibWR2cHpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI5NDIzMTEsImV4cCI6MjA1ODUxODMxMX0.XYc0L58nbhGqHZDwBgvgt5YDVWE2A3FFk3GeYv1R2gE';
   const supabase = createClient(supabaseUrl, supabaseKey);
 
-  // Sign up
   const signupForm = document.getElementById('signup-form');
   if (signupForm) {
     signupForm.addEventListener('submit', async function (e) {
@@ -26,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Log in
   const loginForm = document.getElementById('login-form');
   if (loginForm) {
     loginForm.addEventListener('submit', async function (e) {
@@ -56,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Login/Logout Button
   const loginBtn = document.getElementById('login-button');
   if (loginBtn) {
     supabase
@@ -84,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Submit Review
   const reviewForm = document.getElementById('review-form');
   if (reviewForm) {
     reviewForm.addEventListener('submit', async function (e) {
@@ -105,13 +101,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (message) {
           message.textContent = `Thank you for reviewing ${ra}! Your review has been submitted.`;
         }
-        // Redirect to the RA's profile page
         window.location.href = `ra_profile.html?ra_name=${ra}`;
       }
     });
   }
 
-  // Display all reviews on the "all_reviews.html" page
   const reviewsList = document.getElementById('reviews-list');
   if (reviewsList) {
     (async () => {
@@ -143,7 +137,6 @@ document.addEventListener("DOMContentLoaded", function () {
     })();
   }
 
-  // RA Profile Page: Display Reviews for a Specific RA or All RAs
   const raProfileReviewsList = document.getElementById('ra-profile-reviews-list');
   if (raProfileReviewsList) {
     (async () => {
@@ -200,7 +193,6 @@ document.addEventListener("DOMContentLoaded", function () {
     })();
   }
 
-  // Create RA Profile Form
   const raProfileForm = document.getElementById('ra-profile-form');
   if (raProfileForm) {
     raProfileForm.addEventListener('submit', async function (e) {
@@ -209,7 +201,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const name = document.getElementById('ra-name').value;
       const hall = document.getElementById('ra-hall').value;
 
-      // Check if RA already exists
       const { data: existingRA, error: fetchError } = await supabase
         .from('ra_profile')
         .select('*')
@@ -226,7 +217,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // Insert if not found
       const { error: insertError } = await supabase
         .from('ra_profile')
         .insert([{ ra_name: name, ra_hall: hall }]);
@@ -241,7 +231,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Display all RA profiles
 const raProfilesList = document.getElementById('ra-profiles-list');
 if (raProfilesList) {
   (async () => {
@@ -272,7 +261,6 @@ if (raProfilesList) {
   })();
 }
 
-// Calculate and display average rating for RA on their profile
 const raAvgRatingDisplay = document.getElementById('ra-average-rating');
 if (raProfileReviewsList && raAvgRatingDisplay) {
   (async () => {
