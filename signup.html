@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script src="backend.js"></script>
+    <script type="module" src="supa.js"></script>
 </head>
 <body>
     <header>
@@ -20,10 +20,10 @@
         <div class="center_body">
             <h1>Create an Account</h1>
             <form id="signup-form">
-                <label for="username">Username:</label>
-                <input placeholder="Please Create a Username" type="text" id="username" name="username" required><br><br>
+                <label for="email">Email:</label>
+                <input placeholder="Please Type in Your Email" type="text" id="email" name="email" autocomplete="email" required><br><br>
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required><br><br>
+                <input type="password" id="password" name="password" autocomplete="new-password" required><br><br>
                 <div class="buttons">
                     <button id="login-button" class="green_black_button" type="submit">Sign Up</button>
                 </div>
@@ -40,9 +40,5 @@
             <a href="CA_Notice_.html">CA Notice at Collections</a>
         </div>
     </footer>
-    <script>
-        sign_up_users();
-        logged_in_user_check();
-    </script>
 </body>
 </html>

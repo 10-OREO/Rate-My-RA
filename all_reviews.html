@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="backend.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script type="module" src="supa.js"></script>
 </head>
 <body>
     <header>
@@ -21,8 +23,9 @@
         <div class="center_body">
             <h1>RA Reviews</h1>
             <div id="reviews-list"></div> 
-            <div class="buttons">
+            <div class="buttons" style="display: flex; flex-direction: column; gap:20px">                
                 <button class="green_black_button" onclick="location.href='review.html'">Write a Review!!!</button>
+                <button class="green_black_button" onclick="location.href='create_ra.html'">Create an RA Profile!!!</button>
             </div>
         </div>
     </main>
@@ -36,9 +39,5 @@
             <a href="CA_Notice_.html">CA Notice at Collections</a>
         </div>
     </footer>
-    <script>
-        review_display();
-        logged_in_user_check();
-    </script>
 </body>
 </html>
